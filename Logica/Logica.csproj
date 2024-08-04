@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LnCarreras.cs" />
+    <Compile Include="LnEstudiante.cs" />
     <Compile Include="LnMaterias.cs" />
     <Compile Include="LnUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
