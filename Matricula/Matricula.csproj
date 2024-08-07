@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DB\Project2Query.sql" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -129,6 +130,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="ManejoEstudiantes.aspx" />
+    <Content Include="ManejoGrupos.aspx" />
     <Content Include="ManejoMaterias.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -219,6 +221,13 @@
     </Compile>
     <Compile Include="ManejoEstudiantes.aspx.designer.cs">
       <DependentUpon>ManejoEstudiantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManejoGrupos.aspx.cs">
+      <DependentUpon>ManejoGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManejoGrupos.aspx.designer.cs">
+      <DependentUpon>ManejoGrupos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManejoMaterias.aspx.cs">
       <DependentUpon>ManejoMaterias.aspx</DependentUpon>

@@ -45,7 +45,7 @@
     <Compile Include="EstadoGrupo.cs" />
     <Compile Include="Horario.cs" />
     <Compile Include="oCarrera.cs" />
-    <Compile Include="oEstudianet.cs" />
+    <Compile Include="oEstudiante.cs" />
     <Compile Include="oGrupo.cs" />
     <Compile Include="oMateria.cs" />
     <Compile Include="oUsuario.cs" />

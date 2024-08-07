@@ -1,10 +1,9 @@
-﻿using Objetos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Datos;
+using Objetos;
 
 namespace Logica
 {
@@ -14,24 +13,20 @@ namespace Logica
         {
             try
             {
-                //instanciar la entidad para hacer la llamada
-
-                Datos.LdMaterias datos = new Datos.LdMaterias();
-
-                var tabla = datos.ConsultaMaterias(idCarrera,idMateria);
-
-                //List<oArticulo> listado = util.ConvertDataTableToList<oArticulo>(tabla);
+                LdMaterias datos = new LdMaterias();
+                var tabla = datos.ConsultaMaterias(idCarrera, idMateria);
 
                 List<oMateria> listado = tabla.AsEnumerable()
-             .Select(row => new oMateria
-             {
-                 IdCarrera = row.Field<int>("IdCarrera"),
-                 Carrera = row.Field<string>("Carrera"),
-                 IdMateria   = row.Field<int>("IdMateria"),
-                 Materia = row.Field<string>("Materia")
-
-             })
-             .ToList();
+                    .Select(row => new oMateria
+                    {
+                        Carrera = new oCarrera
+                        {
+                            IdCarrera = row.Field<int>("IdCarrera"),
+                            Carrera = row.Field<string>("Carrera")
+                        },
+                        IdMateria = row.Field<int>("IdMateria"),
+                        Materia = row.Field<string>("Materia")
+                    }).ToList();
 
                 return listado;
             }
@@ -41,5 +36,31 @@ namespace Logica
             }
         }
 
+        public int CrearMateria(oMateria materia)
+        {
+            try
+            {
+                LdMaterias datos = new LdMaterias();
+                int idMateria = datos.CrearMateria(materia.Carrera.IdCarrera, materia.Materia);
+                return idMateria;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void ActualizarMateria(oMateria materia)
+        {
+            try
+            {
+                LdMaterias datos = new LdMaterias();
+                datos.ActualizarMateria(materia.IdMateria, materia.Carrera.IdCarrera, materia.Materia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

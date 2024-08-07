@@ -31,5 +31,10 @@ namespace Matricula
         {
             Response.Redirect("ManejoMaterias.aspx");
         }
+
+        protected void btnGroupManagement_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManejoGrupos.aspx");
+        }
     }
 }

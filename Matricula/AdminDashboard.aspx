@@ -12,6 +12,7 @@
             <asp:Button ID="btnStudentManagement" runat="server" Text="Estudiantes" OnClick="btnStudentManagement_Click" />
             <asp:Button ID="btnCarreras" runat="server" Text="Carreras" OnClick="btnCarreras_Click" />
             <asp:Button ID="btnSubjectManagement" runat="server" Text="Materias" OnClick="btnSubjectManagement_Click" />
+            <asp:Button ID="btnGroupManagement" runat="server" Text="Grupos" OnClick="btnGroupManagement_Click" />
         </div>
     </form>
 </body>

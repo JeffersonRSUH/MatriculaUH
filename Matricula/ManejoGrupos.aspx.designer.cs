@@ -11,7 +11,7 @@ namespace Matricula
 {
 
 
-    public partial class ManejoMaterias
+    public partial class ManejoGrupos
     {
 
         /// <summary>
@@ -24,57 +24,84 @@ namespace Matricula
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// GridViewMaterias control.
+        /// txtNumeroGrupo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewMaterias;
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroGrupo;
 
         /// <summary>
-        /// HiddenFieldIdMateria control.
+        /// txtCupo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldIdMateria;
+        protected global::System.Web.UI.WebControls.TextBox txtCupo;
 
         /// <summary>
-        /// DropDownListCarrera control.
+        /// ddlMateria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListCarrera;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMateria;
 
         /// <summary>
-        /// TxtMateria control.
+        /// ddlHorario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMateria;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHorario;
 
         /// <summary>
-        /// BtnCrearMateria control.
+        /// ddlEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCrearMateria;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
 
         /// <summary>
-        /// BtnActualizarMateria control.
+        /// btnCrearGrupo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnActualizarMateria;
+        protected global::System.Web.UI.WebControls.Button btnCrearGrupo;
+
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
+        /// gvGrupos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvGrupos;
+
+        /// <summary>
+        /// btnBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack;
     }
 }
