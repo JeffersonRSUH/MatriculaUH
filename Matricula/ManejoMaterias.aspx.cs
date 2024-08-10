@@ -1,25 +1,37 @@
-﻿using System;
+using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Logica;
-using Objetos;
 
 namespace Matricula
 {
     public partial class ManejoMaterias : Page
     {
         private LnMaterias _lnMaterias;
+        private LnCarreras _lnCarreras; // Instancia para manejar las carreras
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _lnMaterias = new LnMaterias();
+            _lnCarreras = new LnCarreras(); // Inicializar la instancia
 
             if (!IsPostBack)
             {
-                LoadMaterias();
+                LoadCarreras(); // Cargar las carreras
+                LoadMaterias(); // Cargar las materias
             }
+        }
+
+        protected void LoadCarreras()
+        {
+            var carreras = _lnCarreras.ConsultaCarreras(0); // Obtén todas las carreras
+            DropDownListCarrera.DataSource = carreras;
+            DropDownListCarrera.DataTextField = "Carrera"; // Nombre visible en el DropDownList
+            DropDownListCarrera.DataValueField = "IdCarrera"; // Valor almacenado en el DropDownList
+            DropDownListCarrera.DataBind();
         }
 
         protected void LoadMaterias()
@@ -37,7 +49,8 @@ namespace Matricula
                 {
                     IdCarrera = Convert.ToInt32(DropDownListCarrera.SelectedValue)
                 },
-                Materia = TxtMateria.Text
+                Materia = TxtMateria.Text,
+                Creditos = Convert.ToInt32(TxtCreditos.Text)
             };
 
             _lnMaterias.CrearMateria(nuevaMateria);
@@ -53,7 +66,8 @@ namespace Matricula
                 {
                     IdCarrera = Convert.ToInt32(DropDownListCarrera.SelectedValue)
                 },
-                Materia = TxtMateria.Text
+                Materia = TxtMateria.Text,
+                Creditos = Convert.ToInt32(TxtCreditos.Text)
             };
 
             _lnMaterias.ActualizarMateria(materiaActualizada);
@@ -72,8 +86,11 @@ namespace Matricula
                     HiddenFieldIdMateria.Value = materia.IdMateria.ToString();
                     DropDownListCarrera.SelectedValue = materia.Carrera.IdCarrera.ToString();
                     TxtMateria.Text = materia.Materia;
+                    TxtCreditos.Text = materia.Creditos.ToString(); // Cargar créditos
                 }
             }
         }
+
+
     }
 }
