@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -52,7 +52,7 @@ namespace Datos
             }
         }
 
-        public int CrearMateria(int idCarrera, string materia)
+        public int CrearMateria(int idCarrera, string materia, int creditos)
         {
             SqlCommand cmdEjecutar = new SqlCommand();
             cmdEjecutar.CommandText = "[dbo].[spCrearMateria]";
@@ -61,6 +61,8 @@ namespace Datos
 
             cmdEjecutar.Parameters.AddWithValue("@IdCarrera", idCarrera);
             cmdEjecutar.Parameters.AddWithValue("@Materia", materia);
+            cmdEjecutar.Parameters.AddWithValue("@Creditos", creditos);
+
 
             try
             {
@@ -82,7 +84,7 @@ namespace Datos
             }
         }
 
-        public void ActualizarMateria(int idMateria, int idCarrera, string materia)
+        public void ActualizarMateria(int idMateria, int idCarrera, string materia, int creditos)
         {
             SqlCommand cmdEjecutar = new SqlCommand();
             cmdEjecutar.CommandText = "[dbo].[spActualizarMateria]";
@@ -92,6 +94,7 @@ namespace Datos
             cmdEjecutar.Parameters.AddWithValue("@IdMateria", idMateria);
             cmdEjecutar.Parameters.AddWithValue("@IdCarrera", idCarrera);
             cmdEjecutar.Parameters.AddWithValue("@Materia", materia);
+            cmdEjecutar.Parameters.AddWithValue("@Creditos", creditos);
 
             try
             {
