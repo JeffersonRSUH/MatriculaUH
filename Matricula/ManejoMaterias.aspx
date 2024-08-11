@@ -19,14 +19,14 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Materia" HeaderText="Materia" />
-                    <asp:BoundField DataField="Creditos" HeaderText="Créditos" />
-                    <asp:TemplateField HeaderText="Acción">
+                    <asp:BoundField DataField="Creditos" HeaderText="Creditos" />
+                    <asp:TemplateField HeaderText="Accion">
                         <ItemTemplate>
                             <asp:Button ID="BtnEdit" runat="server" CommandName="EditMateria" CommandArgument='<%# Eval("IdMateria") %>' Text="Edit" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-            </asp:GridView>
+            </asp:GridView> <br />
 
             <div>
                 <asp:HiddenField ID="HiddenFieldIdMateria" runat="server" />
@@ -37,11 +37,12 @@
                 <asp:Label ID="LblMateria" runat="server" Text="Materia:" />
                 <asp:TextBox ID="TxtMateria" runat="server" />
 
-                <asp:Label ID="LblCreditos" runat="server" Text="Créditos:" />
-                <asp:TextBox ID="TxtCreditos" runat="server" />
+                <asp:Label ID="LblCreditos" runat="server" Text="Creditos:" />
+                <asp:TextBox ID="TxtCreditos" runat="server" /> <br /><br />
 
                 <asp:Button ID="BtnCrearMateria" runat="server" Text="Crear Materia" OnClick="BtnCrearMateria_Click" />
                 <asp:Button ID="BtnActualizarMateria" runat="server" Text="Actualizar Materia" OnClick="BtnActualizarMateria_Click" />
+                <asp:Button ID="BtnBack" runat="server" Text="Back" OnClick="BtnBack_Click" />
             </div>
         </div>
     </form>

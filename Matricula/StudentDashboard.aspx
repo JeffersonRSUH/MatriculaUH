@@ -11,6 +11,7 @@
         <div>
             <h1>Estudiantes</h1>
             <asp:Button ID="btnMatricula" runat="server" Text="Matricula" OnClick="btnMatricula_Click" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         </div>
     </form>
 </body>

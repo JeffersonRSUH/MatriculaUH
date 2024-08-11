@@ -36,5 +36,11 @@ namespace Matricula
         {
             Response.Redirect("ManejoGrupos.aspx");
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session["adminUser"] = null;
+            Response.Redirect("Login.aspx");
+        }
     }
 }

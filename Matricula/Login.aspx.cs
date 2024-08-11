@@ -35,11 +35,13 @@ namespace Matricula
                     if (authenticatedUser.idRol == 1)
                     {
                         // Redirect to Dashboard.aspx for Administrador role
+                        Session["adminUser"] = authenticatedUser;
                         Response.Redirect("AdminDashboard.aspx");
                     }
                     else if (authenticatedUser.idRol == 2)
                     {
                         // Redirect to Matriculas.aspx for Usuario role
+                        Session["studentUser"] = authenticatedUser;
                         Response.Redirect("StudentDashboard.aspx");
                     }
                     else

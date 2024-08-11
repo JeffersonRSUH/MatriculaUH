@@ -30,7 +30,8 @@
             <asp:DropDownList ID="ddlEstado" runat="server"></asp:DropDownList>
             <br />
 
-            <asp:Button ID="btnCrearGrupo" runat="server" Text="Crear Grupo" OnClick="btnCrearGrupo_Click" />
+            <asp:Button ID="btnCrearGrupo" runat="server" Text="Crear Grupo" OnClick="btnCrearGrupo_Click" /> o
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
             <br />
 
             <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
@@ -47,8 +48,6 @@
                 </Columns>
             </asp:GridView>
         </div>
-
-        <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
     </form>
 </body>
 </html>
