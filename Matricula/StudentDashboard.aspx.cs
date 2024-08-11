@@ -13,5 +13,10 @@ namespace Matricula
         {
 
         }
+
+        protected void btnMatricula_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManejoMatricula.aspx");
+        }
     }
 }

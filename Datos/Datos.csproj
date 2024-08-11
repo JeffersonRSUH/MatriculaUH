@@ -46,6 +46,7 @@
     <Compile Include="LdEstudiante.cs" />
     <Compile Include="LdGrupos.cs" />
     <Compile Include="LdMaterias.cs" />
+    <Compile Include="LdMatricula.cs" />
     <Compile Include="LdUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
