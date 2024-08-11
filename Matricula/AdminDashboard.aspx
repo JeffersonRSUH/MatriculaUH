@@ -13,6 +13,7 @@
             <asp:Button ID="btnCarreras" runat="server" Text="Carreras" OnClick="btnCarreras_Click" />
             <asp:Button ID="btnSubjectManagement" runat="server" Text="Materias" OnClick="btnSubjectManagement_Click" />
             <asp:Button ID="btnGroupManagement" runat="server" Text="Grupos" OnClick="btnGroupManagement_Click" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         </div>
     </form>
 </body>

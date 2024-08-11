@@ -106,7 +106,18 @@ namespace Matricula
                 LnGrupos logica = new LnGrupos();
                 var grupos = logica.ObtenerGrupos();
 
-                gvGrupos.DataSource = grupos;
+                // Create a new list to store the data with a simple Materia property
+                var gruposDisplay = grupos.Select(g => new
+                {
+                    g.IdGrupo,
+                    g.NumeroGrupo,
+                    g.Cupo,
+                    g.Materia.Materia,
+                    g.Horario,
+                    g.Estado
+                }).ToList();
+
+                gvGrupos.DataSource = gruposDisplay;
                 gvGrupos.DataBind();
             }
             catch (Exception ex)
