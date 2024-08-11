@@ -240,6 +240,36 @@ CREATE TABLE Grupo (
 INSERT INTO Grupo (NumeroGrupo, Cupo, IdMateria, IdHorario, IdEstadoGrupo)
 	VALUES (1,10,1,1,1);
 
+CREATE TABLE Matricula (
+    IdMatricula INT PRIMARY KEY IDENTITY(1,1),
+    IdEstudiante INT NOT NULL,
+    IdGrupo INT NOT NULL,
+    FechaMatricula DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_Matricula_Estudiante FOREIGN KEY (IdEstudiante) REFERENCES Estudiante(IdEstudiante),
+    CONSTRAINT FK_Matricula_Grupo FOREIGN KEY (IdGrupo) REFERENCES Grupo(IdGrupo)
+);
+
+-- STORED PROCEDURE GESTION MATRICULA
+CREATE PROCEDURE spMatricular
+    @idEstudiante INT,
+    @idGrupo INT,
+    @cod_error INT OUTPUT,
+    @msg_error VARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET @cod_error = 0;
+    SET @msg_error = '';
+
+    BEGIN TRY
+        INSERT INTO Matricula (IdEstudiante, IdGrupo)
+        VALUES (@idEstudiante, @idGrupo);
+    END TRY
+    BEGIN CATCH
+        SET @cod_error = ERROR_NUMBER();
+        SET @msg_error = ERROR_MESSAGE();
+    END CATCH
+END
+
 -- STORED PROCEDURE GESTION ESTUDIANTES
 
 CREATE PROCEDURE [dbo].[spBuscarEstudiantes]
@@ -455,5 +485,3 @@ BEGIN
     WHERE IdMateria = @IdMateria;
 END
 GO
-
-

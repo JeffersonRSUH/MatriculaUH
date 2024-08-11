@@ -42,6 +42,15 @@ namespace Matricula
         protected global::System.Web.UI.WebControls.HiddenField HiddenFieldIdMateria;
 
         /// <summary>
+        /// LblCarrera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblCarrera;
+
+        /// <summary>
         /// DropDownListCarrera control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace Matricula
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCarrera;
 
         /// <summary>
+        /// LblMateria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblMateria;
+
+        /// <summary>
         /// TxtMateria control.
         /// </summary>
         /// <remarks>
@@ -58,6 +76,15 @@ namespace Matricula
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtMateria;
+
+        /// <summary>
+        /// LblCreditos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblCreditos;
 
         /// <summary>
         /// TxtCreditos control.
