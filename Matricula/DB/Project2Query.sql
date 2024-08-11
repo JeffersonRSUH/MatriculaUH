@@ -24,6 +24,7 @@ CREATE TABLE [dbo].[Materia](
 	[IdCarrera] [int] NOT NULL,
 	[Materia] [varchar](150) NOT NULL,
 	[Estado] [bit] NOT NULL,
+	[Creditos] [int] NOT NULL,
  CONSTRAINT [PK_Materia] PRIMARY KEY CLUSTERED 
 (
 	[IdMateria] ASC
@@ -68,9 +69,9 @@ SET IDENTITY_INSERT [dbo].[Carrera] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Materia] ON 
 GO
-INSERT [dbo].[Materia] ([IdMateria], [IdCarrera], [Materia], [Estado]) VALUES (1, 1, N'Programación IV', 1)
+INSERT [dbo].[Materia] ([IdMateria], [IdCarrera], [Materia], [Estado], [Creditos]) VALUES (1, 1, N'Programación IV', 1, 5)
 GO
-INSERT [dbo].[Materia] ([IdMateria], [IdCarrera], [Materia], [Estado]) VALUES (2, 1, N'Bases de datos', 1)
+INSERT [dbo].[Materia] ([IdMateria], [IdCarrera], [Materia], [Estado], [Creditos]) VALUES (2, 1, N'Bases de datos', 1, 6)
 GO
 SET IDENTITY_INSERT [dbo].[Materia] OFF
 GO
@@ -419,32 +420,40 @@ CREATE PROCEDURE [dbo].[spSeleccionaMaterias]
 @IdMateria INT
 AS
 BEGIN
-    SELECT m.IdCarrera, m.IdMateria, m.Materia, c.Carrera
+    SELECT m.IdCarrera, m.IdMateria, m.Materia, m.Creditos, c.Carrera
     FROM Materia m
     INNER JOIN Carrera c ON m.IdCarrera = c.IdCarrera
     WHERE (@idCarrera IS NULL OR m.IdCarrera = @idCarrera)
       AND (@idMateria IS NULL OR m.IdMateria = @idMateria)
 END
+GO
 
 CREATE PROCEDURE [dbo].[spCrearMateria]
 @IdCarrera INT,
-@Materia VARCHAR(150)
+@Materia VARCHAR(150),
+@Creditos INT
 AS
 BEGIN
-    INSERT INTO Materia (IdCarrera, Materia, Estado)
-    VALUES (@IdCarrera, @Materia, 1);
+    INSERT INTO Materia (IdCarrera, Materia, Creditos, Estado)
+    VALUES (@IdCarrera, @Materia, @Creditos, 1);
     
     SELECT SCOPE_IDENTITY() AS IdMateria;
 END
+GO
 
 CREATE PROCEDURE [dbo].[spActualizarMateria]
 @IdMateria INT,
 @IdCarrera INT,
-@Materia VARCHAR(150)
+@Materia VARCHAR(150),
+@Creditos INT
 AS
 BEGIN
     UPDATE Materia
     SET IdCarrera = @IdCarrera,
-        Materia = @Materia
+        Materia = @Materia,
+        Creditos = @Creditos
     WHERE IdMateria = @IdMateria;
 END
+GO
+
+
