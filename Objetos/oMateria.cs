@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Objetos
 {
@@ -7,5 +7,6 @@ namespace Objetos
         public oCarrera Carrera { get; set; } // Get IdCarrera and Carrera
         public int IdMateria { get; set; }
         public string Materia { get; set; }
+        public int Creditos { get; set; }
     }
 }
