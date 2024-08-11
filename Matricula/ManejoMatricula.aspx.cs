@@ -20,6 +20,10 @@ namespace Matricula
                 // Fetch and display groups
                 List<oGrupo> grupos = _lnMatricula.ObtenerGrupos();
                 ltGrupos.Text = GenerateGruposHtml(grupos);
+
+                // Fetch and display matriculas
+                List<oMatricula> matriculas = _lnMatricula.ListarMatriculas();
+                ltMatriculas.Text = GenerateMatriculasHtml(matriculas);
             }
         }
 
@@ -45,6 +49,17 @@ namespace Matricula
             return html;
         }
 
+        private string GenerateMatriculasHtml(List<oMatricula> matriculas)
+        {
+            string html = "<table border='1'><tr><th>ID Matrícula</th><th>ID Estudiante</th><th>ID Grupo</th></tr>";
+            foreach (var matricula in matriculas)
+            {
+                html += $"<tr><td>{matricula.IdMatricula}</td><td>{matricula.IdEstudiante.IdEstudiante}</td><td>{matricula.IdGrupo.IdGrupo}</td></tr>";
+            }
+            html += "</table>";
+            return html;
+        }
+
         protected void btnMatricular_Click(object sender, EventArgs e)
         {
             try
@@ -63,6 +78,39 @@ namespace Matricula
             {
                 Response.Write("<script>alert('Error al realizar la matrícula: " + ex.Message + "');</script>");
             }
+            finally
+            {
+                Response.Redirect("StudentDashboard.aspx");
+            }
+        }
+
+        protected void btnDesmatricular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.TryParse(txtMatriculaId.Text, out int idMatricula))
+                {
+                    _lnMatricula.Desmatricular(idMatricula);
+                    Response.Write("<script>alert('Desmatriculación realizada con éxito');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Por favor, ingrese un ID válido para la matrícula');</script>");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Error al realizar la desmatriculación: " + ex.Message + "');</script>");
+            }
+            finally
+            {
+                Response.Redirect("StudentDashboard.aspx");
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("StudentDashboard.aspx");
         }
     }
 }

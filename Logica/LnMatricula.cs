@@ -79,5 +79,39 @@ namespace Logica
                 throw new Exception("Error in business logic for matricula: " + ex.Message);
             }
         }
+
+        public List<oMatricula> ListarMatriculas()
+        {
+            try
+            {
+                DataTable tabla = datos.ListarMatriculas();
+                List<oMatricula> listado = tabla.AsEnumerable()
+                    .Select(row => new oMatricula
+                    {
+                        IdMatricula = row.Field<int>("IdMatricula"),
+                        IdEstudiante = new oEstudiante { IdEstudiante = Convert.ToString(row.Field<int>("IdEstudiante")) },
+                        IdGrupo = new oGrupo { IdGrupo = row.Field<int>("IdGrupo") }
+                    })
+                    .ToList();
+
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error listing matriculas: " + ex.Message);
+            }
+        }
+
+        public void Desmatricular(int idMatricula)
+        {
+            try
+            {
+                datos.Desmatricular(idMatricula);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in business logic for desmatricula: " + ex.Message);
+            }
+        }
     }
 }
