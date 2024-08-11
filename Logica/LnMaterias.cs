@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -25,7 +25,8 @@ namespace Logica
                             Carrera = row.Field<string>("Carrera")
                         },
                         IdMateria = row.Field<int>("IdMateria"),
-                        Materia = row.Field<string>("Materia")
+                        Materia = row.Field<string>("Materia"),
+                        Creditos = row.Field<int>("Creditos")
                     }).ToList();
 
                 return listado;
@@ -41,7 +42,7 @@ namespace Logica
             try
             {
                 LdMaterias datos = new LdMaterias();
-                int idMateria = datos.CrearMateria(materia.Carrera.IdCarrera, materia.Materia);
+                int idMateria = datos.CrearMateria(materia.Carrera.IdCarrera, materia.Materia, materia.Creditos);
                 return idMateria;
             }
             catch (Exception ex)
@@ -55,7 +56,7 @@ namespace Logica
             try
             {
                 LdMaterias datos = new LdMaterias();
-                datos.ActualizarMateria(materia.IdMateria, materia.Carrera.IdCarrera, materia.Materia);
+                datos.ActualizarMateria(materia.IdMateria, materia.Carrera.IdCarrera, materia.Materia, materia.Creditos);
             }
             catch (Exception ex)
             {
