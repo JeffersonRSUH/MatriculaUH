@@ -119,5 +119,59 @@ namespace Datos
                 }
             }
         }
+
+        public void Desmatricular(int idMatricula)
+        {
+            using (SqlCommand cmd = new SqlCommand("spDesmatricular", _connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdMatricula", idMatricula);
+
+                try
+                {
+                    _connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error removing matricula: " + ex.Message);
+                }
+                finally
+                {
+                    if (_connection.State == ConnectionState.Open)
+                    {
+                        _connection.Close();
+                    }
+                }
+            }
+        }
+
+        public DataTable ListarMatriculas()
+        {
+            using (SqlCommand cmd = new SqlCommand("spListarMatriculas", _connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataTable resultado = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                try
+                {
+                    _connection.Open();
+                    adapter.Fill(resultado);
+                    return resultado;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error listing matriculas: " + ex.Message);
+                }
+                finally
+                {
+                    if (_connection.State == ConnectionState.Open)
+                    {
+                        _connection.Close();
+                    }
+                }
+            }
+        }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="oEstudiante.cs" />
     <Compile Include="oGrupo.cs" />
     <Compile Include="oMateria.cs" />
+    <Compile Include="oMatricula.cs" />
     <Compile Include="oUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoIdentificacion.cs" />

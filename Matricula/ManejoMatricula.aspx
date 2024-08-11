@@ -23,6 +23,16 @@
             <asp:TextBox ID="txtGrupoId" runat="server" />
 
             <asp:Button ID="btnMatricular" runat="server" Text="Matricular" OnClick="btnMatricular_Click" />
+
+            <h2>Listado de Matrículas</h2>
+            <asp:Literal ID="ltMatriculas" runat="server"></asp:Literal>
+
+            <h2>Desmatricular un Curso</h2>
+            <asp:Label Text="Matricula Id" runat="server" />
+            <asp:TextBox ID="txtMatriculaId" runat="server" />
+
+            <asp:Button ID="btnDesmatricular" runat="server" Text="Desmatricular" OnClick="btnDesmatricular_Click" /> o
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
         </div>
     </form>
 </body>

@@ -270,6 +270,29 @@ BEGIN
     END CATCH
 END
 
+CREATE PROCEDURE spListarMatriculas
+AS
+BEGIN
+    SELECT IdMatricula, IdEstudiante, IdGrupo
+    FROM Matricula
+END
+
+CREATE PROCEDURE spDesmatricular
+    @IdMatricula INT
+AS
+BEGIN
+    BEGIN TRY
+        DELETE FROM Matricula
+        WHERE IdMatricula = @IdMatricula
+    END TRY
+    BEGIN CATCH
+        -- Handle errors
+        DECLARE @ErrorMessage NVARCHAR(4000);
+        SELECT @ErrorMessage = ERROR_MESSAGE();
+        RAISERROR (@ErrorMessage, 16, 1);
+    END CATCH
+END
+
 -- STORED PROCEDURE GESTION ESTUDIANTES
 
 CREATE PROCEDURE [dbo].[spBuscarEstudiantes]
