@@ -508,3 +508,34 @@ BEGIN
     WHERE IdMateria = @IdMateria;
 END
 GO
+
+-- Crear el procedimiento para obtener la cantidad de estudiantes
+IF OBJECT_ID('dbo.spObtenerCantidadEstudiantes', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.spObtenerCantidadEstudiantes;
+GO
+
+CREATE PROCEDURE [dbo].[spObtenerCantidadEstudiantes]
+    @idCarrera INT
+AS
+BEGIN
+    SELECT COUNT(*) 
+    FROM Estudiante 
+    WHERE IdCarrera = @idCarrera;
+END;
+GO
+
+-- Crear el procedimiento para obtener la cantidad de materias
+IF OBJECT_ID('dbo.spObtenerCantidadMaterias', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.spObtenerCantidadMaterias;
+GO
+
+CREATE PROCEDURE [dbo].[spObtenerCantidadMaterias]
+    @idCarrera INT
+AS
+BEGIN
+    SELECT COUNT(*) 
+    FROM Materia 
+    WHERE IdCarrera = @idCarrera;
+END;
+GO
+
