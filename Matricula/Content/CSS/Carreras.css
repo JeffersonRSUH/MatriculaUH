@@ -1,0 +1,20 @@
+﻿body {
+    background-image: url('../Images/Carreras.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background for readability */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #fff;
+}
+
+.form-label {
+    color: #fff;
+}

@@ -113,6 +113,21 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\AdminDashboard.css" />
+    <Content Include="Content\CSS\Carreras.css" />
+    <Content Include="Content\CSS\Login.css" />
+    <Content Include="Content\CSS\ManejoEstudiantes.css" />
+    <Content Include="Content\CSS\ManejoGrupos.css" />
+    <Content Include="Content\CSS\ManejoMaterias.css" />
+    <Content Include="Content\CSS\ManejoMatricula.css" />
+    <Content Include="Content\CSS\StudentDashboard.css" />
+    <Content Include="Content\Images\AdminDashboard.jpg" />
+    <Content Include="Content\Images\Carreras.jpg" />
+    <Content Include="Content\Images\Login.jpg" />
+    <Content Include="Content\Images\ManejoEstudiantes.jpg" />
+    <Content Include="Content\Images\ManejoGrupos.jpg" />
+    <Content Include="Content\Images\ManejoMaterias.jpg" />
+    <Content Include="Content\Images\ManejoMatricula.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="DB\Project2Query.sql" />
     <Content Include="Default.aspx" />
@@ -277,7 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\CSS\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
