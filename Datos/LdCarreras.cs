@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -132,6 +132,65 @@ namespace Datos
                 cmdEjecutar.Dispose();
             }
         }
+
+        public int ObtenerCantidadEstudiantes(int idCarrera)
+        {
+            SqlCommand cmdEjecutar = new SqlCommand();
+            cmdEjecutar.CommandText = "[dbo].[spObtenerCantidadEstudiantes]";
+            cmdEjecutar.CommandType = CommandType.StoredProcedure;
+            cmdEjecutar.Connection = _connection;
+
+            try
+            {
+                cmdEjecutar.Parameters.AddWithValue("@idCarrera", idCarrera);
+
+                _connection.Open();
+                int cantidadEstudiantes = (int)cmdEjecutar.ExecuteScalar();
+                return cantidadEstudiantes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+                cmdEjecutar.Dispose();
+            }
+        }
+
+        public int ObtenerCantidadMaterias(int idCarrera)
+        {
+            SqlCommand cmdEjecutar = new SqlCommand();
+            cmdEjecutar.CommandText = "[dbo].[spObtenerCantidadMaterias]";
+            cmdEjecutar.CommandType = CommandType.StoredProcedure;
+            cmdEjecutar.Connection = _connection;
+
+            try
+            {
+                cmdEjecutar.Parameters.AddWithValue("@idCarrera", idCarrera);
+
+                _connection.Open();
+                int cantidadMaterias = (int)cmdEjecutar.ExecuteScalar();
+                return cantidadMaterias;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+                cmdEjecutar.Dispose();
+            }
+        }
+
 
         #endregion
     }
