@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -45,21 +45,21 @@ namespace Matricula
         private void CargaCarreras()
         {
             LnCarreras negocios = new LnCarreras();
-
             var listaCarreras = negocios.ConsultaCarreras(0);
 
             foreach (var item in listaCarreras)
             {
                 HtmlGenericControl div = new HtmlGenericControl("div");
 
-                div.InnerHtml = "<p>IdCarrera: " + item.IdCarrera + ", nombre: " + item.Carrera + "</p>";
+                int cantidadEstudiantes = negocios.ObtenerCantidadEstudiantes(item.IdCarrera);
+                int cantidadMaterias = negocios.ObtenerCantidadMaterias(item.IdCarrera);
 
+                div.InnerHtml = $"<p>IdCarrera: {item.IdCarrera}, Nombre: {item.Carrera}, Estudiantes: {cantidadEstudiantes}, Materias: {cantidadMaterias}</p>";
 
                 divCarreras.Controls.Add(div);
             }
-
-
         }
+
 
         protected void btnUpdateCarrera_Click(object sender, EventArgs e)
         {
