@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,5 +69,17 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
+        public int ObtenerCantidadEstudiantes(int idCarrera)
+        {
+            LdCarreras datos = new LdCarreras();
+            return datos.ObtenerCantidadEstudiantes(idCarrera);
+        }
+
+        public int ObtenerCantidadMaterias(int idCarrera)
+        {
+            LdCarreras datos = new LdCarreras();
+            return datos.ObtenerCantidadMaterias(idCarrera);
+        }
+
     }
 }
