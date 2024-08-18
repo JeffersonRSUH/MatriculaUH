@@ -190,8 +190,36 @@ namespace Datos
                 cmdEjecutar.Dispose();
             }
         }
+        public void ActualizarCarrera(string nombreCarrera, int idCarrera)
+        {
+            SqlCommand cmdEjecutar = new SqlCommand();
+            cmdEjecutar.CommandText = "[dbo].[spActualizarCarrera]";
+            cmdEjecutar.CommandType = CommandType.StoredProcedure;
+            cmdEjecutar.Connection = _connection;
 
+            cmdEjecutar.Parameters.AddWithValue("@idcarrera", idCarrera);
+            cmdEjecutar.Parameters.AddWithValue("@nombre", nombreCarrera);
 
-        #endregion
+            try
+            {
+                _connection.Open();
+                cmdEjecutar.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+                cmdEjecutar.Dispose();
+            }
+
+            #endregion
+        }
     }
 }
+
