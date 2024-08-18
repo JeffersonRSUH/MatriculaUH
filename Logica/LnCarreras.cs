@@ -80,6 +80,18 @@ namespace Logica
             LdCarreras datos = new LdCarreras();
             return datos.ObtenerCantidadMaterias(idCarrera);
         }
-
+        public void ActualizarCarrera(oCarrera carrera)
+        {
+            try
+            {
+                LdCarreras datos = new LdCarreras();
+                datos.ActualizarCarrera(carrera.Carrera, carrera.IdCarrera);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
+
