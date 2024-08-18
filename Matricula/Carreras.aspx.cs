@@ -12,9 +12,14 @@ namespace Matricula
 {
     public partial class Carreras : System.Web.UI.Page
     {
+        private LnCarreras _lnCarreras;
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargaCarreras();
+            _lnCarreras = new LnCarreras();
+            if (!IsPostBack)
+            {
+                CargaCarreras();
+            }
         }
 
         protected void btnInsertaCarrera_Click(object sender, EventArgs e)
@@ -23,23 +28,23 @@ namespace Matricula
             {
                 string nombre = txtNombre.Text;
 
-
                 LnCarreras negocios = new LnCarreras();
-
                 var resultado = negocios.InsertarCarrera(nombre);
 
                 if (resultado)
                 {
                     CargaCarreras();
                 }
-                else {
+                else
+                {
                     ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No fue posible insertar el registro.');", true);
                 }
             }
             catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Ocurrió un error: "+ex.Message+"');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Ocurrió un error: " + ex.Message + "');", true);
             }
+            txtNombre.Text = "";
         }
 
         private void CargaCarreras()
@@ -47,24 +52,57 @@ namespace Matricula
             LnCarreras negocios = new LnCarreras();
             var listaCarreras = negocios.ConsultaCarreras(0);
 
-            foreach (var item in listaCarreras)
+            var dataSource = listaCarreras.Select(item => new
             {
-                HtmlGenericControl div = new HtmlGenericControl("div");
+                item.IdCarrera,
+                item.Carrera,
+                CantidadEstudiantes = negocios.ObtenerCantidadEstudiantes(item.IdCarrera),
+                CantidadMaterias = negocios.ObtenerCantidadMaterias(item.IdCarrera)
+            }).ToList();
 
-                int cantidadEstudiantes = negocios.ObtenerCantidadEstudiantes(item.IdCarrera);
-                int cantidadMaterias = negocios.ObtenerCantidadMaterias(item.IdCarrera);
+            gvCarreras.DataSource = dataSource;
+            gvCarreras.DataBind();
+        }
+        protected void BtnActualizarCarrera_Click(object sender, EventArgs e)
+        {
+            var carreraActualizada = new oCarrera
+            {
+                IdCarrera = Convert.ToInt32(HiddenFieldIdCarrera.Value),
+                Carrera = TxtNombreCarrera.Text // Update the career name with the value from the TextBox
+            };
 
-                div.InnerHtml = $"<p>IdCarrera: {item.IdCarrera}, Nombre: {item.Carrera}, Estudiantes: {cantidadEstudiantes}, Materias: {cantidadMaterias}</p>";
+            _lnCarreras.ActualizarCarrera(carreraActualizada);
+            CargaCarreras(); // Refresh the list of careers
+        }
+        protected void gvCarreras_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditCarrera")
+            {
+                int idCarrera = Convert.ToInt32(e.CommandArgument);
+                var carrera = _lnCarreras.ConsultaCarreras(idCarrera).FirstOrDefault();
 
-                divCarreras.Controls.Add(div);
+                if (carrera != null)
+                {
+                    HiddenFieldIdCarrera.Value = carrera.IdCarrera.ToString();
+                    TxtNombreCarrera.Text = carrera.Carrera; // Populate the TextBox with the career name
+                }
             }
         }
 
-
-        protected void btnUpdateCarrera_Click(object sender, EventArgs e)
+        protected void gvCarreras_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            int idCarrera = Convert.ToInt32(gvCarreras.DataKeys[e.NewEditIndex].Value);
+            var carrera = _lnCarreras.ConsultaCarreras(idCarrera).FirstOrDefault();
 
+            if (carrera != null)
+            {
+                HiddenFieldIdCarrera.Value = carrera.IdCarrera.ToString();
+                TxtNombreCarrera.Text = carrera.Carrera; // Populate the TextBox with the career name
+            }
+
+            gvCarreras.EditIndex = e.NewEditIndex; // Set the edit index if you want to put the row into edit mode
         }
+
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
